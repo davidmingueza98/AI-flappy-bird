@@ -3,8 +3,9 @@
 
 # FLAPPY BIRD AI
 
-An Artificial Intelligence that plays the famous game Flappy Bird using reinforced learning models from NEAT.
+An Artificial Intelligence that plays the famous game Flappy Bird using NEAT.
 
+The main goal is to apply **genetic algorithms** to generate an AI that achieves high scores in the game.
 
 ## How to run the simulation
 Execute *game.py* to observe the AI playing. It only needs the modules Pygame and NEAT.
