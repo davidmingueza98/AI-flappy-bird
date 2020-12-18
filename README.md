@@ -1,4 +1,4 @@
-[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/davidmingueza98/flappy-bird-AI.svg)](https://github.com/davidmingueza98/flappy-bird-AI)
+[![HitCount](http://hits.dwyl.com/davidmingueza98/flappy-bird-AI.svg)](http://hits.dwyl.com/davidmingueza98/flappy-bird-AI)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 
 # FLAPPY BIRD AI
