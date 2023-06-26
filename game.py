@@ -1,6 +1,12 @@
-import pygame, neat, time, os, random
+import time
+import os
+import random
 
-#https://github.com/techwithtim/NEAT-Flappy-Bird/blob/master/flappy_bird.py
+import pygame
+import neat
+
+
+# CONSTANTS DEFINITIONS
 
 pygame.font.init()
 
@@ -21,33 +27,45 @@ GEN = 0
 
 
 class Bird:
+	"""
+	Represents the bird in the game. Defines basic properties as the image, starting position,
+	orientation and velocity. Implements interaction functions as move and jump in the air.
+	"""
 	IMGS = BIRD_IMGS
 	MAX_ROTATION = 25
 	ROT_VEL = 20
 	ANIMATION_TIME = 5
 
-	#starting position of the bird
 	def __init__(self, x, y):
+		"""
+		Sets the starting position. Tilt equal to zero means flat.
+		"""
 		self.x = x
 		self.y = y
-		self.tilt = 0 #looking flat
+		self.tilt = 0
 		self.tick_count = 0
 		self.vel = 0
 		self.height = self.y
 		self.img_count = 0
-		self.img = self.IMGS[0] #bird1
+		self.img = self.IMGS[0]
 
 	def jump(self):
-		self.vel = -10.5 #to go up
-		self.tick_count = 0 #when last jump
+		"""
+		Implements the jump. Negative velocity is to go up.
+		"""
+		self.vel = -10.5
+		self.tick_count = 0
 		self.height = self.y
 
 	#every single frame
 	def move(self):
+		"""
+		Implements the movement. Executed every single frame.
+		Determines how much the bird is moving down or up, sets a terminal velocity
+		and defines the conditions when the nose dive start.
+		"""
 		self.tick_count += 1
-		#tells how much where moving down or up
 		d = self.vel * self.tick_count + 0.5*(3)*self.tick_count**2
-		#in total 9 pixels up
 
 		#terminal velocity
 		if d >= 16:
@@ -68,9 +86,12 @@ class Bird:
 				self.tilt -= self.ROT_VEL
 
 	def draw(self, win):
+		"""
+		Selects and prints an image in the screen depending on an index
+		that loops around the animation base images.
+		"""
 		self.img_count += 1
 
-		#what image to show based on the img_count
 		if self.img_count <= self.ANIMATION_TIME:
 			self.img = self.IMGS[0]
 		elif self.img_count <= self.ANIMATION_TIME * 2:
@@ -83,7 +104,7 @@ class Bird:
 			self.img = self.IMGS[0]
 			self.img_count = 0
 
-		#do not flapping going down
+		#no flap going down
 		if self.tilt <= -80:
 			self.img = self.IMGS[1]
 			self.img_count = self.ANIMATION_TIME*2
@@ -93,10 +114,12 @@ class Bird:
 		new_rect = rotated_image.get_rect(center=self.img.get_rect(topleft = (self.x, self.y)).center)
 		win.blit(rotated_image, new_rect.topleft)
 
-	#generate a mask for collisions
-	def get_mask(self):
-		return pygame.mask.from_surface(self.img)
 
+	def get_mask(self):
+		"""
+		Generates a mask for to perform collisions
+		"""
+		return pygame.mask.from_surface(self.img)
 
 
 class Pipe:

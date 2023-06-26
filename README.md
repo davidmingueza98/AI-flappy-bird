@@ -3,9 +3,22 @@
 
 # FLAPPY BIRD AI
 
-An Artificial Intelligence that plays the famous game Flappy Bird using NEAT.
+## About the project
 
-The main goal is to apply **genetic algorithms** to generate an AI that achieves high scores in the game.
+An Artificial Intelligence that plays Flappy Bird using [NEAT](https://neat-python.readthedocs.io/en/latest/).
 
-## How to run the simulation
-Execute *game.py* to observe the AI playing. It only needs the modules Pygame and NEAT.
+Code extracted from the [original repository](https://github.com/techwithtim/NEAT-Flappy-Bird) from techwithtim.
+
+This script generates an autonomous agent that achieves high scores in the game in short training time.
+
+This implementation uses **genetic algorithms** with a Feed Forward network. The configuration is defined in `config-feedforward.txt`.
+
+The algorithm trains itself in some iterations until the agent gets high scores. At the end, the agent generated is able to play the game indefinitely during hours.
+
+## Installation
+
+Create a virtual environment and run: `pip install -r requirements.txt`
+
+## How to run
+
+Execute *game.py* to generate the agent and see the game.
