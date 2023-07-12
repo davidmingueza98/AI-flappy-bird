@@ -19,6 +19,6 @@ The algorithm trains itself in some iterations until the agent gets high scores.
 
 Create a virtual environment and run: `pip install -r requirements.txt`
 
-## How to run
+## Usage
 
 Execute *game.py* to generate the agent and observe the game.
